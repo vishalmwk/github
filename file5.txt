@@ -1,2 +1,0 @@
-Creating new file on remote repo
-Updating file to test for Poll SCH 
