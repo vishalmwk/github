@@ -7,4 +7,13 @@
     yum: name=docker state=present
   - name: Start Docker
     service: name=docker state=started
-  - name: Get the dockerfile  
+  - name: Get the dockerfile
+    git:
+    repo: 'https://github.com/vishalmwk/github.git'
+    dest: /tmp/dockerdir
+  - name: Build Image from Dockerfile
+    docker_image:
+    command: chdir /tmp/dockerdir docker build -t myimage:ansible
+  - name: Run docker image
+    command: docker run -itd -P myimage:ansible
+  
